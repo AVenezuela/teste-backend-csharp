@@ -42,7 +42,9 @@ namespace Tests.TorreHanoi.Domain
         [TestCategory(CategoriaTeste)]
         public void Processar_Deverar_Retornar_Sucesso()
         {
-            Assert.Fail();
+            var torre = new global::Domain.TorreHanoi.TorreHanoi(3, _mockLogger.Object);
+            torre.Processar();
+            Assert.AreEqual(torre.Status, global::Domain.TorreHanoi.TipoStatus.FinalizadoSucesso);
         }
     }
 }
