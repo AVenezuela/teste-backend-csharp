@@ -43,8 +43,14 @@ namespace Tests.TorreHanoi.Domain
         public void Processar_Deverar_Retornar_Sucesso()
         {
             var torre = new global::Domain.TorreHanoi.TorreHanoi(3, _mockLogger.Object);
+            int totalInicioDiscos = torre.Origem.Discos.Count;
+
             torre.Processar();
             Assert.AreEqual(torre.Status, global::Domain.TorreHanoi.TipoStatus.FinalizadoSucesso);
+            Assert.AreEqual(torre.Intermediario.Discos.Count, 0);
+            Assert.AreEqual(torre.Origem.Discos.Count, 0);
+            Assert.AreEqual(torre.Destino.Discos.Count, totalInicioDiscos);
+
         }
     }
 }
